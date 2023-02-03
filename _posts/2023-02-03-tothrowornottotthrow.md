@@ -10,8 +10,10 @@ Which is better? Let's check!
 ### Performance
 Have you heard that throwing&catching exceptions in .Net are heavy? Have you ever checked that? I have.
 
-I considered two XYZ: 
+I considered two aspects: 
+
 **Depth** - What is a depth between 'catch' and 'throw'.
+
 Example:
 ```javascript
 try { throw new Exception(); } catch {} // depth: 0
@@ -20,29 +22,15 @@ try { someFunctionWhichExecutesTheOtherExceptionThrowingFunction(); } catch {} /
 // ect...
 ``` 
 **Iterations** - how many times I executed the same code.
-I compared how long it takes to XExecutions o
 
 **The results:**
-Depth level: 1, iterations: 10000
-Throw: 81ms
-OperatioResult: 0ms
+| Scenario | Throw | OperationResult |
+|-------|--------|---------|
+| Depth level: 1, iterations: 10000 | 81ms | 1ms |
+| Depth level: 10, iterations: 10000 | 151ms | 1ms |
+| Depth level: 100, iterations: 10000 | 947ms | 10ms |
+| Depth level: 1, iterations: 100000 | 701ms | 1ms |
+| Depth level: 10, iterations: 100000 | 1513ms | 9ms |
+| Depth level: 100, iterations: 100000 | 8049ms | 92ms |
 
-Depth level: 10, iterations: 10000
-Throw: 151ms
-OperatioResult: 0ms
-
-Depth level: 100, iterations: 10000
-Throw: 947ms
-OperatioResult: 10ms
-
-Depth level: 1, iterations: 100000
-Throw: 701ms
-OperatioResult: 1ms
-
-Depth level: 10, iterations: 100000
-Throw: 1513ms
-OperatioResult: 9ms
-
-Depth level: 100, iterations: 100000
-Throw: 8049ms
-OperatioResult: 92ms
+### XYZ
